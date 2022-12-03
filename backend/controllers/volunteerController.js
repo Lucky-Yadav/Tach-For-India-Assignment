@@ -28,7 +28,9 @@ const addvolunteer = async (req, res) => {
 };
 const volunteerlist = async (req, res) => {
     try {
-             const volunteerlist = await volenteerModel.findAll();
+             const volunteerlist = await volenteerModel
+               .find({})
+              
        return res.send({
          volunteerlist,
        });

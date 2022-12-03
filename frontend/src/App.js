@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Private from "./components/Private";
 import Signup from "./components/Signup";
 import Forms from "./components/Forms";
+import Volunteers from "./components/Volunteers";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             </Private>
           }
         ></Route>
+        <Route path="/volunteers" element={<Volunteers />}></Route>
         <Route path="/forms" element={<Forms />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/Signup" element={<Signup />}></Route>

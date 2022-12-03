@@ -41,9 +41,16 @@ const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {token ? (<Link to={"/"}>Administrator</Link> ): ""}
+            {token ? (
+              <>
+                <Link to={"/"}>Administrator</Link>
+                <Link to={"/volunteers"}>Volunteers</Link>
+              </>
+            ) : (
+              <Link to={"/forms"}> Forms </Link>
+            )}
+
             
-            <Link to={"/forms"}> Forms </Link> 
           </Box>
           {token ? (
             <Box

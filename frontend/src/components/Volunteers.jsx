@@ -8,12 +8,10 @@ const Volunteers = () => {
         console.log(1);
         axios({
           method: "get",
-          url: "http://localhost:3070/volunteer/register",
+          url: "https://tach-for-india-assignment.vercel.app/volunteer/register",
         }).then((res) => {
-          // localStorage.setItem("logindata", JSON.stringify(loginData));
-            console.log(res.data.volunteerlist);
-            console.log(res);
-            
+          console.log(res.data.volunteerlist);
+          console.log(res);
         });
     };
     const [volunteerdata, setvolunteerdata] = useState([])

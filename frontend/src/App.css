@@ -63,3 +63,20 @@ div {
 .hidden {
   display: none;
 }
+.volunteer {
+ display: flex;
+  border: 3px solid blueviolet;
+  max-width: max-content;
+  border-radius: 1%;
+  padding: 1%;
+  margin-bottom: 10px;
+  min-width: 400px;
+  gap: 3%; 
+}
+.volunteer p {
+  
+  border-right: 1px solid blueviolet;
+}
+.days {
+  display: flex
+}

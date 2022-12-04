@@ -48,7 +48,7 @@ const Forms = () => {
         console.log(days);
        axios({
          method: "post",
-         url: "http://localhost:3070/volunteer/register",
+         url: "https://tach-for-india-assignment.vercel.app/volunteer/register",
          data: loginData,
        })
          .then((res) => {
@@ -56,7 +56,7 @@ const Forms = () => {
          })
          .catch((err) => {
            console.log(err);
-              setaxioserr(err.response.data.message)
+           setaxioserr(err.response.data.message);
          });
      };
     return (

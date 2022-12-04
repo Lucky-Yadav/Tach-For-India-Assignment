@@ -51,9 +51,11 @@ const volunteerlist = async (req, res) => {
         console.log(req.params);
         const language = req.params.language
         const location = req.params.location
+        const volunteerlist = await volenteerModel.find({});
         const volunteerlistbylanguage = await volenteerModel.find({ language: language });
         const volunteerlistbylocation = await volenteerModel.find({ location: location });
-       return res.send({
+        return res.send({
+           volunteerlist,
            volunteerlistbylanguage,
            volunteerlistbylocation
        });

@@ -23,7 +23,7 @@ const Home = () => {
       axios({
         method: "get",
         params: { language: language, location: location },
-        url: "http://localhost:3070/volunteer/register",
+        url: "https://tach-for-india-assignment.vercel.app/volunteer/register",
       }).then((res) => {
         setvolunteerbylanguage(res.data.volunteerlistbylanguage);
         setvolunteerbylocation(res.data.volunteerlistbylocation);

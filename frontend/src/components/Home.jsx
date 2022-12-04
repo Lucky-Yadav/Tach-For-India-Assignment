@@ -10,23 +10,32 @@ const Home = () => {
   const username = useSelector((state) => state.auth.username);
   const email = useSelector((state) => state.auth.email);
   const classrooms = useSelector((state) => state.auth.classroomdata);
-  console.log(classrooms)
   
-    const [volunteerdata, setvolunteerdata] = useState([]);
+  const [volunteerdata, setvolunteerdata] = useState([]);
+  const [volunteerbylanguage, setvolunteerbylanguage] = useState([]);
+  const [volunteerbylocation, setvolunteerbylocation] = useState([]);
+  const [isclicked, setisclicked] = useState("")
   
-  const checkvolunteer = () => {
+  const checkvolunteer = (language,location) => {
     console.log("check");
     const getlist = () => {
       console.log(1);
       axios({
         method: "get",
-        url: "https://tach-for-india-assignment.vercel.app/volunteer/register",
+        params: { language: language, location: location },
+        url: "http://localhost:3070/volunteer/register",
       }).then((res) => {
-        console.log(res.data.volunteerlist);
-        console.log(res);
+        setvolunteerbylanguage(res.data.volunteerlistbylanguage);
+        setvolunteerbylocation(res.data.volunteerlistbylocation);
+        console.log(res.data.volunteerlistbylanguage);
+        console.log(res.data.volunteerlistbylocation);
       });
     };
     getlist()
+  }
+  const handleclick = (language,location,Id) => {
+    checkvolunteer(language, location)
+    setisclicked(Id)
   }
   return (
     <div>
@@ -36,24 +45,72 @@ const Home = () => {
         {classrooms.map((classroom) => (
           <div className="class" key={classroom.classroomID}>
             <div className="left">
-               <h3>Class Id : {classroom.classroomID}</h3>
-            <p>Capacity : {classroom.capacity}</p>
-            <p>Requirement : {classroom.requirement}</p>
-            <p>Subjects : {classroom.subjects}</p>
-            <p>
-              {classroom.languageRequirement.length >0
-                ? `Language Requirements : ${classroom.languageRequirement}`
-                : ""}
-            </p>
-            <p>Location : {classroom.location}</p>
-            <div className="submit">
-              <Button onClick={()=> checkvolunteer()} >Check Volunteers</Button>
+              <h3>Class Id : {classroom.classroomID}</h3>
+              <p>Capacity : {classroom.capacity}</p>
+              <p>Requirement : {classroom.requirement}</p>
+              <p>Subjects : {classroom.subjects}</p>
+              <p>
+                {classroom.languageRequirement.length > 0
+                  ? `Language Requirements : ${classroom.languageRequirement}`
+                  : ""}
+              </p>
+              <p>Location : {classroom.location}</p>
+              <div className="submit">
+                <Button
+                  onClick={() =>
+                    handleclick(
+                      classroom.languageRequirement,
+                      classroom.location,
+                      classroom.classroomID
+                    )
+                  }
+                >
+                  Check Volunteers
+                </Button>
+              </div>
             </div>
-            </div>
-            <div className="right">
-              data
-            </div>
-           
+            {volunteerbylanguage.length > 0 ? (
+              <div
+                className={`right ${
+                  isclicked == classroom.classroomID ? "" : "hidden"
+                } `}
+              >
+                <div className="language">
+                  {volunteerbylanguage.length} volunteers know{" "}
+                  {volunteerbylanguage[0].language}
+                  <div>
+                    and availble during{" "}
+                    {volunteerbylanguage[0].days.map((day) => (
+                      <div key={day}>{day}</div>
+                    ))}{" "}
+                  </div>
+                </div>
+                <div className="locatyion">
+                  {volunteerbylocation.length > 0 ? (
+                    <div>
+                      {volunteerbylocation.length} volunteers from{" "}
+                      {volunteerbylocation[0].location}
+                      <div>
+                        and availble during{" "}
+                        {volunteerbylocation[0].days.map((day) => (
+                          <div key={day}>{day}</div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    "not found by location"
+                  )}
+                </div>
+              </div>
+            ) : (
+              <p
+                className={` ${
+                  isclicked == classroom.classroomID ? "" : "hidden"
+                } `}
+              >
+                No volunteers Found
+              </p>
+            )}
           </div>
         ))}
       </div>

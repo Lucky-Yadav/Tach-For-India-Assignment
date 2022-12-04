@@ -11,7 +11,7 @@ const classroomdata = [
     capacity: 5,
     requirement: 2,
     subjects: ["Maths ", "Science "],
-    languageRequirement: ["Gujarati "],
+    languageRequirement: "Gujarati ",
     location: "Ahmedabad",
   },
   {
@@ -19,7 +19,7 @@ const classroomdata = [
     capacity: 5,
     requirement: 4,
     subjects: ["Maths ", "Science ", "English ", "Social  Studies "],
-    languageRequirement: [],
+    languageRequirement: "",
     location: "Ahmedabad",
   },
   {
@@ -27,7 +27,7 @@ const classroomdata = [
     capacity: 3,
     requirement: 2,
     subjects: ["English ", "Social Studies "],
-    languageRequirement: ["Tamil"],
+    languageRequirement: "Tamil",
     location: "Chennai",
   },
   {
@@ -35,15 +35,15 @@ const classroomdata = [
     capacity: 3,
     requirement: 2,
     subjects: ["Maths"],
-    languageRequirement: ["Hindi"],
-    location: "Chennai",
+    languageRequirement: "Hindi",
+    location: "Narnaul",
   },
   {
     classroomID: "BLR01",
     capacity: 3,
     requirement: 2,
     subjects: ["Maths ", "Science "], 
-    languageRequirement: [],
+    languageRequirement: "",
     location: "Bengaluru",
   },
   {
@@ -51,8 +51,16 @@ const classroomdata = [
     capacity: 2,
     requirement: 1,
     subjects: ["English"],
-    languageRequirement: ["English"],
+    languageRequirement: "English",
     location: "Bengaluru",
+  },
+  {
+    classroomID: "BLR03",
+    capacity: 3,
+    requirement: 2,
+    subjects: ["English"],
+    languageRequirement: "English",
+    location: "Narnaul",
   },
 ];
 

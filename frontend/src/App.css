@@ -44,12 +44,16 @@ div {
   max-width: max-content;
 }
 .classdata {
-  display: flex;
-  gap: 20px;
+  column-gap: 20px;
+  margin-left: 5%;
 }
 .class {  
+  display: flex;
   border: 2px solid blueviolet;
-  max-width: 250px;
+  max-width: max-content;
   border-radius: 5%;
   padding: 1%;
+  margin-bottom: 10px;
+  min-width: 400px;
+  gap: 3%;
 }

@@ -11,7 +11,7 @@ const classroomdata = [
     capacity: 5,
     requirement: 2,
     subjects: ["Maths ", "Science "],
-    languageRequirement: ["Gujarati ", "Hindi "],
+    languageRequirement: ["Gujarati "],
     location: "Ahmedabad",
   },
   {
@@ -35,7 +35,7 @@ const classroomdata = [
     capacity: 3,
     requirement: 2,
     subjects: ["Maths"],
-    languageRequirement: [],
+    languageRequirement: ["Hindi"],
     location: "Chennai",
   },
   {
@@ -51,7 +51,7 @@ const classroomdata = [
     capacity: 2,
     requirement: 1,
     subjects: ["English"],
-    languageRequirement: [],
+    languageRequirement: ["English"],
     location: "Bengaluru",
   },
 ];

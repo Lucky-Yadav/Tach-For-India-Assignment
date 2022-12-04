@@ -35,7 +35,8 @@ const Home = () => {
       <div className="classdata">
         {classrooms.map((classroom) => (
           <div className="class" key={classroom.classroomID}>
-            <h3>Class Id : {classroom.classroomID}</h3>
+            <div className="left">
+               <h3>Class Id : {classroom.classroomID}</h3>
             <p>Capacity : {classroom.capacity}</p>
             <p>Requirement : {classroom.requirement}</p>
             <p>Subjects : {classroom.subjects}</p>
@@ -48,6 +49,11 @@ const Home = () => {
             <div className="submit">
               <Button onClick={()=> checkvolunteer()} >Check Volunteers</Button>
             </div>
+            </div>
+            <div className="right">
+              data
+            </div>
+           
           </div>
         ))}
       </div>

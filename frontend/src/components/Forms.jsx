@@ -13,6 +13,7 @@ const Forms = () => {
     const [contact, setcontact] = useState("");
     const [location, setlocation] = useState("");
     const [language, setlanguage] = useState("");
+    const [axioserr, setaxioserr] = useState("")
     var days = [];
     
       const Weekdays = [
@@ -47,14 +48,19 @@ const Forms = () => {
         console.log(days);
        axios({
          method: "post",
-         url: "https://tach-for-india-assignment.vercel.app/volunteer/register",
+         url: "http://localhost:3070/volunteer/register",
          data: loginData,
-       }).then((res) => {
-         console.log(res);
-       });
+       })
+         .then((res) => {
+           console.log(res);
+         })
+         .catch((err) => {
+           console.log(err);
+              setaxioserr(err.response.data.message)
+         });
      };
     return (
-      <>
+      <div className='forms'>
         <div className="forminput">
           <TextField
             id="contact"
@@ -104,12 +110,13 @@ const Forms = () => {
                 {workdays(params.InputProps.startAdornment)}
               </>
             )}
-          />
+                />
+                <h3>{ axioserr}</h3>
         </div>
         <div className="submit">
-          <button onClick={() => handleregister()}> Register </button>
+          <Button onClick={() => handleregister()}> Register </Button>
         </div>
-      </>
+      </div>
     );
 }
 

@@ -31,3 +31,25 @@ div {
   max-width: 300px;
   margin: 5%;
 }
+.forms {
+ display: flex;
+ justify-content: space-between;
+ max-width: 900px;
+}
+.submit {
+  margin: auto;
+  vertical-align: middle;
+  background-color: rgb(57, 50, 70);
+  border-radius: 4px;
+  max-width: max-content;
+}
+.classdata {
+  display: flex;
+  gap: 20px;
+}
+.class {  
+  border: 2px solid blueviolet;
+  max-width: 250px;
+  border-radius: 5%;
+  padding: 1%;
+}

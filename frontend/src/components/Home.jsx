@@ -10,10 +10,23 @@ const Home = () => {
   const username = useSelector((state) => state.auth.username);
   const email = useSelector((state) => state.auth.email);
   const classrooms = useSelector((state) => state.auth.classroomdata);
-   console.log(classrooms)
+  console.log(classrooms)
+  
+    const [volunteerdata, setvolunteerdata] = useState([]);
   
   const checkvolunteer = () => {
     console.log("check");
+    const getlist = () => {
+      console.log(1);
+      axios({
+        method: "get",
+        url: "https://tach-for-india-assignment.vercel.app/volunteer/register",
+      }).then((res) => {
+        console.log(res.data.volunteerlist);
+        console.log(res);
+      });
+    };
+    getlist()
   }
   return (
     <div>
@@ -22,8 +35,8 @@ const Home = () => {
       <div className="classdata">
         {classrooms.map((classroom) => (
           <div className="class" key={classroom.classroomID}>
-            <h3>Class Id :{classroom.classroomID}</h3>
-            <p>Capacity :{classroom.capacity}</p>
+            <h3>Class Id : {classroom.classroomID}</h3>
+            <p>Capacity : {classroom.capacity}</p>
             <p>Requirement : {classroom.requirement}</p>
             <p>Subjects : {classroom.subjects}</p>
             <p>

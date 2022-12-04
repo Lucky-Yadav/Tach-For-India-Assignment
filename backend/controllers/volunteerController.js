@@ -30,11 +30,27 @@ const addvolunteer = async (req, res) => {
   }
   // res.send("signup")
 };
+var params = function (req) {
+  let q = req.url.split("?"),
+    result = {};
+  if (q.length >= 2) {
+    q[1].split("&").forEach((item) => {
+      try {
+        result[item.split("=")[0]] = item.split("=")[1];
+      } catch (e) {
+        result[item.split("=")[0]] = "";
+      }
+    });
+  }
+  return result;
+};
 const volunteerlist = async (req, res) => {
     try {
-             const volunteerlist = await volenteerModel
-               .find({})
-              
+           
+        req.params = params(req); 
+        console.log(req.params);
+        const language = req.params.language
+        const volunteerlist = await volenteerModel.find({ language: language });
        return res.send({
          volunteerlist,
        });

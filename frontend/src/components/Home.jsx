@@ -1,17 +1,13 @@
-import { Button, Input, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import { Button,  } from '@mui/material';
+import React, {  useState } from 'react'
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 
 const Home = () => {
-  const token = useSelector((state) => state.auth.token);
   const username = useSelector((state) => state.auth.username);
   const email = useSelector((state) => state.auth.email);
   const classrooms = useSelector((state) => state.auth.classroomdata);
   
-  const [volunteerdata, setvolunteerdata] = useState([]);
   const [volunteerbylanguage, setvolunteerbylanguage] = useState([]);
   const [volunteerbylocation, setvolunteerbylocation] = useState([]);
   const [isclicked, setisclicked] = useState("")

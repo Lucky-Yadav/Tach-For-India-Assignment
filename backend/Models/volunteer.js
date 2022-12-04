@@ -8,11 +8,9 @@ const volunteerSchema = mongoose.Schema(
     },
     location: {
       type: String,
-      required: true,
     },
     language: {
       type: String,
-      required: true,
     },
     days: {
       type: Array,

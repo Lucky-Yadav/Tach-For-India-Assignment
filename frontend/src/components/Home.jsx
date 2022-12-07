@@ -10,7 +10,7 @@ const Home = () => {
   
   const [volunteerbylanguage, setvolunteerbylanguage] = useState([]);
   const [volunteerbylocation, setvolunteerbylocation] = useState([]);
-  const [isclicked, setisclicked] = useState("")
+  const [isclicked, setisclicked] = useState("");
   
   const checkvolunteer = (language,location) => {
     console.log("check");

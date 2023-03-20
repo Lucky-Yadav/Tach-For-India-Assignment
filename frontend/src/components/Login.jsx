@@ -38,7 +38,10 @@ const token = useSelector((state) => state.auth.token);
           let token = res.data.token;
           localStorage.setItem("logindata", JSON.stringify(loginData));
           console.log(res, token);
-        });
+        }).catch((err) => {
+          console.log(err.response.data.message)
+          alert(err.response.data.message)
+        })
   }
   if (token) {
     return <Navigate to={"/"}/>

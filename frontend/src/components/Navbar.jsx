@@ -1,4 +1,4 @@
-import  React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,36 +11,40 @@ import { loginloading, sucessLogin } from "../store/auth/action";
 import { logoutsuccess } from "../store/auth/action";
 
 const Navbar = () => {
-  
   useEffect(() => {
     let logindata = JSON.parse(localStorage.getItem("logindata"));
     if (logindata) {
-       dispatch(loginloading());
-       axios({
-         method: "post",
-         url: "https://tach-for-india-assignment.vercel.app/users/signin",
-         data: logindata,
-       }).then((res) => {
-         dispatch(sucessLogin(res.data));
-         console.log(res, token);
-       });
+      dispatch(loginloading());
+      axios({
+        method: "post",
+        url: "https://tach-for-india-assignment.vercel.app/users/signin",
+        data: logindata,
+      }).then((res) => {
+        dispatch(sucessLogin(res.data));
+        console.log(res, token);
+      });
     }
-      
-  }, [])
-  
- 
+    // eslint-disable-next-line
+  }, []);
+
   const token = useSelector((state) => state.auth.token);
- 
+
   const dispatch = useDispatch();
   const handlelogout = () => {
-     localStorage.removeItem("logindata");
+    localStorage.removeItem("logindata");
     dispatch(logoutsuccess());
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="Navbar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            style={{ cursor: "pointer", color: "#24cedb" }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+            }}
+          >
             {token ? (
               <>
                 <Link to={"/"}>Administrator</Link>
@@ -49,8 +53,6 @@ const Navbar = () => {
             ) : (
               <Link to={"/forms"}> Forms </Link>
             )}
-
-            
           </Box>
           {token ? (
             <Box
@@ -63,12 +65,18 @@ const Navbar = () => {
           ) : (
             <div className="registration">
               <Link to="/login">
-                <Box style={{ cursor: "pointer" }} sx={{ flexGrow: 0 }}>
+                <Box
+                  style={{ cursor: "pointer", color: "#24cedb" }}
+                  sx={{ flexGrow: 0 }}
+                >
                   Login
                 </Box>
               </Link>
               <Link to="/signup">
-                <Box style={{ cursor: "pointer" }} sx={{ flexGrow: 0 }}>
+                <Box
+                  style={{ cursor: "pointer", color: "#24cedb" }}
+                  sx={{ flexGrow: 0 }}
+                >
                   Sign Up
                 </Box>
               </Link>

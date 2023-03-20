@@ -1,5 +1,5 @@
-import { Button,  } from '@mui/material';
-import React, {  useState } from 'react'
+import { Button } from "@mui/material";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -7,12 +7,12 @@ const Home = () => {
   const username = useSelector((state) => state.auth.username);
   const email = useSelector((state) => state.auth.email);
   const classrooms = useSelector((state) => state.auth.classroomdata);
-  
+
   const [volunteerbylanguage, setvolunteerbylanguage] = useState([]);
   const [volunteerbylocation, setvolunteerbylocation] = useState([]);
   const [isclicked, setisclicked] = useState("");
-  
-  const checkvolunteer = (language,location) => {
+
+  const checkvolunteer = (language, location) => {
     console.log("check");
     const getlist = () => {
       console.log(1);
@@ -27,12 +27,12 @@ const Home = () => {
         console.log(res.data.volunteerlistbylocation);
       });
     };
-    getlist()
-  }
-  const handleclick = (language,location,Id) => {
-    checkvolunteer(language, location)
-    setisclicked(Id)
-  }
+    getlist();
+  };
+  const handleclick = (language, location, Id) => {
+    checkvolunteer(language, location);
+    setisclicked(Id);
+  };
   return (
     <div>
       <h3> Name :- {username}</h3>
@@ -51,8 +51,9 @@ const Home = () => {
                   : ""}
               </p>
               <p>Location : {classroom.location}</p>
-              <div className="submit">
+              <div>
                 <Button
+                  className="submit"
                   onClick={() =>
                     handleclick(
                       classroom.languageRequirement,
@@ -68,7 +69,7 @@ const Home = () => {
             {volunteerbylanguage.length > 0 ? (
               <div
                 className={`right ${
-                  isclicked == classroom.classroomID ? "" : "hidden"
+                  isclicked === classroom.classroomID ? "" : "hidden"
                 } `}
               >
                 <div className="language">
@@ -101,7 +102,7 @@ const Home = () => {
             ) : (
               <p
                 className={` ${
-                  isclicked == classroom.classroomID ? "" : "hidden"
+                  isclicked === classroom.classroomID ? "" : "hidden"
                 } `}
               >
                 No volunteers Found
@@ -112,6 +113,6 @@ const Home = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;

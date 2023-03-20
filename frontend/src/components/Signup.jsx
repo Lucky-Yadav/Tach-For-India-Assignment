@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -12,70 +12,69 @@ import { Navigate } from "react-router-dom";
 // import { AuthContext } from "../context/AuthContext";
 
 const Signup = () => {
-    
-const token = useSelector((state) => state.auth.token);
-const dispatch = useDispatch();
-    const [loginData, setloginData] = useState({
-        username: "",
-  email: "",
-  password: "",
-});
-// const handlelogout = () => {
-//   dispatch(logoutsuccess());
-// };
-
-const handlechange = (e) => {
-  const { name, value } = e.target;
-  setloginData((prev) => ({
-    ...prev,
-    [name]: value,
-  }));
-};
-
-const handlelogin = () => {
-  //  console.log(2);
-  dispatch(loginloading());
-  axios({
-    method: "post",
-    url: "https://tach-for-india-assignment.vercel.app/users/signup",
-    data: loginData,
-  }).then((res) => {
-    dispatch(sucessLogin(res.data));
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
+  const [loginData, setloginData] = useState({
+    username: "",
+    email: "",
+    password: "",
   });
+  // const handlelogout = () => {
+  //   dispatch(logoutsuccess());
+  // };
+
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setloginData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handlelogin = () => {
+    //  console.log(2);
+    dispatch(loginloading());
+    axios({
+      method: "post",
+      url: "https://tach-for-india-assignment.vercel.app/users/signup",
+      data: loginData,
+    }).then((res) => {
+      dispatch(sucessLogin(res.data));
+    });
+  };
+  if (token) {
+    return <Navigate to={"/"} />;
+  }
+  return (
+    <div>
+      <h5>Admin Signup</h5>
+      <div className="div">
+        {Object.keys(loginData).map((el) => (
+          <TextField
+            key={el}
+            value={loginData[el]}
+            onChange={handlechange}
+            name={el}
+            id={el}
+            label={el.toLocaleUpperCase()}
+            variant="outlined"
+            required
+          />
+        ))}
+      </div>
+
+      <div className="button">
+        <br />
+        <Button
+          onClick={handlelogin}
+          variant="contained"
+          endIcon={<SendIcon />}
+        >
+          {token ? "log out" : "log in"}
+        </Button>
+      </div>
+    </div>
+  );
 };
-if (token) {
-  return <Navigate to={"/"} />;
-}
-return (
-  <div>
-    <h5>Admin Signup</h5>
-    <div className="div">
-      {Object.keys(loginData).map((el) => (
-        <TextField
-          key={el}
-          value={loginData[el]}
-          onChange={handlechange}
-          name={el}
-          id={el}
-          label={el.toLocaleUpperCase()}
-          variant="outlined"
-          required
-        />
-      ))}
-    </div>
 
-    <div className="button">
-      <br />
-      <Button onClick={handlelogin} variant="contained" endIcon={<SendIcon />}>
-        {token ? "log out" : "log in"}
-      </Button>
-    </div>
-  </div>
-);
-}
-
-export default Signup
-
-
-
-
+export default Signup;

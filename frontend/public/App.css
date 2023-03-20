@@ -10,12 +10,11 @@
 }
 a {
   text-decoration: none;
-  color: aliceblue;
+  color: #daa520;
   padding: 5px;
   margin: 5px;
   border-radius: 8px;
   padding-top: 2px;
-  background-color: blueviolet;
 }
 .registration {
   display: flex;
@@ -23,6 +22,10 @@ a {
 }
 div {
   padding: 5px;
+}
+.Navbar {
+  background-color: #1a7911;
+  color: #24cedb;
 }
 .forminput {
   gap: 20px;
@@ -39,7 +42,8 @@ div {
 .submit {
   margin: auto;
   vertical-align: middle;
-  background-color: rgb(57, 50, 70);
+  color: #24cedb;
+  background: #1a7911;
   border-radius: 4px;
   max-width: max-content;
 }
